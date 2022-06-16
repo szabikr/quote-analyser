@@ -21,3 +21,7 @@
 button.App-link:hover {
   color: #d1f5fe;
 }
+
+.selected-word {
+  color: #d1f5fe;
+}

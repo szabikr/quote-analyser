@@ -20,6 +20,11 @@ function WordDefinition({ details }) {
           </ol>
         </div>
       ))}
+      <p>
+        <a className="App-link" href={details.sourceUrl}>
+          Source
+        </a>
+      </p>
     </div>
   )
 }

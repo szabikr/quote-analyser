@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { removeNonAlphanumbericChars, lowerCase, onlyUnique } from '../../utils'
 import './words.css'
 
-function Words({ quote, selectWord }) {
+function Words({ quote, selectedWord, selectWord }) {
   const [words, setWords] = useState([])
 
   useEffect(() => {
@@ -22,7 +22,9 @@ function Words({ quote, selectWord }) {
         {words.map((word) => (
           <div key={word} className="word-button-wrapper">
             <button
-              className="word-button App-link"
+              className={`word-button ${
+                word === selectedWord ? 'selected-word' : 'App-link'
+              }`}
               onClick={() => selectWord(word)}
             >
               {word}
