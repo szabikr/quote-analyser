@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import logo from '../../logo.svg'
 import Credits from '../credits'
+import Words from '../words/words'
+import Word from '../word'
 import './app.css'
 
 function App() {
   const [quote, setQuote] = useState('')
+  const [selectedWord, setSelectedWord] = useState(null)
 
   useEffect(() => {
     fetch('https://api.kanye.rest')
@@ -18,13 +21,22 @@ function App() {
     }
   }, [])
 
+  const handleOnChange = (event) => setQuote(event.target.value)
+  const selectWord = (word) => setSelectedWord(word)
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>Quote Analyser</h2>
-        <textarea rows="6" cols="48" value={quote} onChange />
+        <h1>Quote Analyser</h1>
+        <textarea rows="6" cols="48" value={quote} onChange={handleOnChange} />
         <Credits />
+        <Words
+          quote={quote}
+          selectedWord={selectedWord}
+          selectWord={selectWord}
+        />
+        <Word word={selectedWord} />
       </header>
     </div>
   )
